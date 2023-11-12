@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 const bmiHistoryData = [];
+=======
+// 小步測試，反覆驗證
+let bmiHistoryData = [];
+>>>>>>> eeba6a9093440a6880fbe23b5c65696e33b91301
 const bmiStatesData = {
     "overThin": {
       "state": "過輕",
@@ -25,6 +30,7 @@ const bmiStatesData = {
       "color": "綠色"
     },
   };
+<<<<<<< HEAD
 
 function bmiStatesText (state){
     console.log(`您的體重${bmiStatesData[state].state}，健康指數為${bmiStatesData[state].color}`);
@@ -81,6 +87,56 @@ function showHistoryData(){
 };
 
 
+=======
+function bmiStatesText (state){
+    console.log(`您的體重${bmiStatesData[state].state}，健康指數為${bmiStatesData[state].color}`);
+}
+function addData(bmi, state){
+    console.log(bmi,state);
+    let obj = {};
+    obj.bmi = bmi;
+    obj.state = state;
+    bmiHistoryData.push(obj);
+}
+function printBmi(height, weight){
+    // let height = 178;
+    // let weight = 70;
+    bmiStatesText("overThin");
+    let bmi = (weight/(height/100)**2).toFixed(2);
+    // console.log(bmi);
+    if(bmi < 18.5){
+        addData(bmi, "overThin");
+        bmiStatesText ("overThin")
+    }else if(18.5 <= bmi && bmi <24){
+        addData(bmi, "normal")
+        bmiStatesText ("normal")
+    }else if(24 <= bmi && bmi <27){
+        addData(bmi, "overWeight")
+        bmiStatesText ("overWeight")
+    }else if(27 <= bmi && bmi <30){
+        addData(bmi, "mildFat")
+        bmiStatesText ("mildFat")
+    }else if(30 <= bmi && bmi <35){
+        addData(bmi, "moderateFat")
+        bmiStatesText ("moderateFat")
+    }else if(bmi >= 35){
+        addData(bmi, "severeFat")
+        bmiStatesText ("severeFat")
+    }else{
+        console.log("您的數值輸入錯誤，請重新輸入");
+    }
+};
+
+function showHistoryData(){
+    const totalNum = bmiHistoryData.length;
+    const lastNum = totalNum -1;
+    const lastState = bmiHistoryData[lastNum].state
+    console.log(bmiHistoryData);
+    console.log(`您總共計算${totalNum} 次 BMI 紀錄，
+    最後一次 BMI 指數為 ${bmiHistoryData[lastNum].bmi}，
+    體重${bmiStatesData[lastState].state}！健康指數為${bmiStatesData[lastState].color}！`);
+}
+>>>>>>> eeba6a9093440a6880fbe23b5c65696e33b91301
 // 第一階段：請寫 printBmi 函式，並印出對應狀態
 
 printBmi(178, 20) 
@@ -100,11 +156,18 @@ printBmi("身高","體重")
 
 
 // 第二階段：請程式碼裡加入此變數，並嘗試運用此變數裡的資訊。
+<<<<<<< HEAD
 
 printBmi(178, 20) 
 // >> 印出 console.log 文字為「您的體重過輕，健康指數為藍色」
 printBmi(178, 70)
 //  >> 印出 console.log 文字為「您的體重正常，健康指數為紅色」
+=======
+printBmi(178, 20) 
+//
+printBmi(178, 70) 
+// >> 印出 console.log 文字為「您的體重正常，健康指數為紅色」
+>>>>>>> eeba6a9093440a6880fbe23b5c65696e33b91301
 printBmi(178, 85)
 // >> 印出 console.log 文字為「您的體重過重，健康指數為澄色」
 printBmi(178, 90)
